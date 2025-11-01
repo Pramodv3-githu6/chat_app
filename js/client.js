@@ -46,7 +46,8 @@
 // Client-side JavaScript for the chat application
 // Ensure you have socket.io-client installed: npm install socket.io-client
 
-const socket = io('http://localhost:8000');  // Connect to the server at the specified URL
+// const socket = io('http://localhost:8000');  // Connect to the server at the specified URL
+const socket = io('https://chat-app-xcjd.onrender.com');  // Connect to the server at the specified URL
 
 // Get DOM elements in respective Js variables using their IDs
 
