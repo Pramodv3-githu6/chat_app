@@ -1,4 +1,3 @@
-// backend/server.js
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
@@ -7,17 +6,16 @@ const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 
-app.use(cors());
-
 const io = new Server(server, {
   cors: {
-    origin: ['https://chatapp-teal-eight.vercel.app'], // your Vercel domain
-    methods: ['GET', 'POST'],
-  },
+    origin: 'https://chatapp-teal-eight.vercel.app/',
+    methods: ['GET', 'POST']
+  }
 });
 
+app.use(cors());
 app.get('/', (req, res) => {
-  res.send('✅ Chat server is running!');
+  res.send('Socket.IO chat server is running!');
 });
 
 const users = {};
@@ -40,7 +38,8 @@ io.on('connection', socket => {
   });
 });
 
+// Use dynamic port for Render
 const PORT = process.env.PORT || 10000;
 server.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
